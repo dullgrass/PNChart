@@ -106,7 +106,7 @@
 //       self.barChart.yLabels = @[@-10,@0,@10];
         [self.barChart setYValues:@[@10.82,@1.88,@6.96,@33.93]];
         [self.barChart setStrokeColors:@[PNGreen,PNGreen,PNRed,PNGreen]];
-//      self.barChart.isGradientShow = NO;
+      self.barChart.isGradientShow = NO;
         self.barChart.isShowNumbers = YES;
         [self.barChart strokeChart];
         
