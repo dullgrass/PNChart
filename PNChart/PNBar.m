@@ -230,10 +230,13 @@
   } else if (adjustWidth >=8  && adjustWidth <=10) {
     [self.textLayer setFontSize:10];
     
-  }  else  if(adjustWidth >= 10){
+  } else  if(adjustWidth >= 10 && adjustWidth <12){
     
     [self.textLayer setFontSize:8];
     
+  }  else  if(adjustWidth >= 12){
+    
+    [self.textLayer setFontSize:6];
   }
   
   if (adjustWidth >0) {
@@ -255,7 +258,7 @@
 }
 - (void)setIsNegative:(BOOL)isNegative{
   if (isNegative) {
-    [self.textLayer setString:[[NSString alloc]initWithFormat:@"- %1.f",_grade*self.maxDivisor]];
+    [self.textLayer setString:[[NSString alloc]initWithFormat:@"-%1.f",_grade*self.maxDivisor]];
     
     CGSize size = CGSizeMake(320,2000); //设置一个行高上限
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
@@ -276,10 +279,16 @@
       
       [self.textLayer setFontSize:10];
       
-    } else  if(adjustWidth >= 10){
+    } else  if(adjustWidth >= 10 && adjustWidth <12){
       
       [self.textLayer setFontSize:8];
+      
+    }  else  if(adjustWidth >= 12){
+      
+      [self.textLayer setFontSize:6];
     }
+    
+    
     if (adjustWidth>0 ) {
       frame.origin.x = 0;
       frame.size.width = self.bounds.size.width;
