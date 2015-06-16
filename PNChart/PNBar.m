@@ -219,25 +219,26 @@
   float adjustWidth = size.width - textWidth;
   
   if (adjustWidth >= 2 && adjustWidth <4) {
-    [self.textLayer setFontSize:16];
-   
-  } else if (adjustWidth >=4  && adjustWidth <6) {
     [self.textLayer setFontSize:14];
     
-  }else if (adjustWidth >=6  && adjustWidth <8) {
+  } else if (adjustWidth >=4  && adjustWidth <6) {
     [self.textLayer setFontSize:12];
     
-  } else if (adjustWidth >=8  && adjustWidth <=10) {
+  }else if (adjustWidth >=6  && adjustWidth <8) {
     [self.textLayer setFontSize:10];
+    
+  } else if (adjustWidth >=8  && adjustWidth <=10) {
+    [self.textLayer setFontSize:8];
     
   } else  if(adjustWidth >= 10 && adjustWidth <12){
     
-    [self.textLayer setFontSize:8];
+    [self.textLayer setFontSize:6];
     
   }  else  if(adjustWidth >= 12){
     
-    [self.textLayer setFontSize:6];
+    [self.textLayer setFontSize:4];
   }
+  
   
   if (adjustWidth >0) {
     [self.textLayer setFrame:CGRectMake(0,verticalY,textWidth,size.height)];
@@ -267,25 +268,25 @@
     float adjustWidth = size.width - self.bounds.size.width;
     
     if (adjustWidth >= 2 && adjustWidth <=4) {
-      [self.textLayer setFontSize:16];
+      [self.textLayer setFontSize:14];
       
     } else if (adjustWidth >=4  && adjustWidth <=6) {
-      [self.textLayer setFontSize:14];
+      [self.textLayer setFontSize:12];
       
     } else if (adjustWidth >=6  && adjustWidth <8) {
       
-      [self.textLayer setFontSize:12];
-    } else if (adjustWidth >=8  && adjustWidth <10) {
-      
       [self.textLayer setFontSize:10];
-      
-    } else  if(adjustWidth >= 10 && adjustWidth <12){
+    } else if (adjustWidth >=8  && adjustWidth <10) {
       
       [self.textLayer setFontSize:8];
       
-    }  else  if(adjustWidth >= 12){
+    } else  if(adjustWidth >= 10 && adjustWidth <12){
       
       [self.textLayer setFontSize:6];
+      
+    }  else  if(adjustWidth >= 12){
+      
+      [self.textLayer setFontSize:4];
     }
     
     
