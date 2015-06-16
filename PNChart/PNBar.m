@@ -199,7 +199,8 @@
     CGFloat textWidth = self.bounds.size.width;
   
     [_chartLine addSublayer:self.textLayer];
-    [self.textLayer setFontSize:18.0];
+    [self.textLayer setFontSize:17.0];
+
   
     [self.textLayer setString:[[NSString alloc]initWithFormat:@"%0.f",grade*self.maxDivisor]];
   
@@ -214,10 +215,34 @@
     } else {
       verticalY = topSpace +  (textheigt-size.height)/2.0;
     }
-  
-    [self.textLayer setFrame:CGRectMake((textWidth-size.width)/2.0,verticalY, size.width,size.height)];
-    self.textLayer.contentsScale = [UIScreen mainScreen].scale;
 
+  float adjustWidth = size.width - textWidth;
+  
+  if (adjustWidth >= 2 && adjustWidth <4) {
+    [self.textLayer setFontSize:16];
+   
+  } else if (adjustWidth >=4  && adjustWidth <6) {
+    [self.textLayer setFontSize:14];
+    
+  }else if (adjustWidth >=6  && adjustWidth <8) {
+    [self.textLayer setFontSize:12];
+    
+  } else if (adjustWidth >=8  && adjustWidth <=10) {
+    [self.textLayer setFontSize:10];
+    
+  }  else  if(adjustWidth >= 10){
+    
+    [self.textLayer setFontSize:8];
+    
+  }
+  
+  if (adjustWidth >0) {
+    [self.textLayer setFrame:CGRectMake(0,verticalY,textWidth,size.height)];
+    self.textLayer.contentsScale = [UIScreen mainScreen].scale;
+  } else {
+    [self.textLayer setFrame:CGRectMake((textWidth-size.width)/2.0,verticalY,size.width,size.height)];
+    self.textLayer.contentsScale = [UIScreen mainScreen].scale;
+  }
 }
 
 - (void)setIsShowNumber:(BOOL)isShowNumber{
@@ -236,8 +261,36 @@
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
     size = [self.textLayer.string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     CGRect frame = self.textLayer.frame;
-    frame.origin.x = (self.bounds.size.width - size.width)/2.0;
-    frame.size = size;
+    float adjustWidth = size.width - self.bounds.size.width;
+    
+    if (adjustWidth >= 2 && adjustWidth <=4) {
+      [self.textLayer setFontSize:16];
+      
+    } else if (adjustWidth >=4  && adjustWidth <=6) {
+      [self.textLayer setFontSize:14];
+      
+    } else if (adjustWidth >=6  && adjustWidth <8) {
+      
+      [self.textLayer setFontSize:12];
+    } else if (adjustWidth >=8  && adjustWidth <10) {
+      
+      [self.textLayer setFontSize:10];
+      
+    } else  if(adjustWidth >= 10){
+      
+      [self.textLayer setFontSize:8];
+    }
+    if (adjustWidth>0 ) {
+      frame.origin.x = 0;
+      frame.size.width = self.bounds.size.width;
+      frame.size.height = size.height;
+    } else {
+      frame.origin.x = (self.bounds.size.width - size.width)/2.0;
+      frame.size = size;
+    }
+    
+    
+   
     self.textLayer.frame = frame;
     
     CABasicAnimation* rotationAnimation;
